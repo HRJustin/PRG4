@@ -1,5 +1,5 @@
 import { Actor, Vector, Keys, SpriteSheet, CollisionType, Shape } from "excalibur";
-
+//
 let player1, player2, Resources;
 
 async function initializeSpriteSheets() {
@@ -28,23 +28,27 @@ async function initializeSpriteSheets() {
 }
 
 initializeSpriteSheets();
+//
 
-export let previousScene = {
-    scene: '',
-};
+// export let previousScene = {
+//     scene: '',
+// };
 
 
 export class Player extends Actor {
 
-    constructor(width, height) {
+    constructor(x, y, width = 50, height = 50) {
         super({
             width: width,
             height: height,
+            pos: new Vector(x, y),
+            vel: new Vector(0, 0),
+            collisionType: CollisionType.Active
         });
 
         this.graphics.use(Resources.RedCar.toSprite());
-        this.pos = new Vector(x, y);
-        this.vel = new Vector(0, 0);
+        // this.pos = new Vector(x, y);
+        // this.vel = new Vector(0, 0);
     }
 
     onPreUpdate(engine) {
